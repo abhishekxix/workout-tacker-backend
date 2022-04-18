@@ -1,4 +1,4 @@
-import type { CustomAPIError } from './CustomAPIError.interface';
+import type { CustomAPIError } from 'CustomAPIError';
 import { StatusCodes } from 'http-status-codes';
 
 export const BadRequestError = (message: string): CustomAPIError => {
