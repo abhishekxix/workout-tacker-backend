@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
 
-export const UserSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   name: {
     type: String,
     minlength: 3,
@@ -42,3 +42,5 @@ UserSchema.methods.comparePassword = async function (
 ) {
   return await bcrypt.compare(candidatePassword, this.password);
 };
+
+export const User = mongoose.model('User', UserSchema);
