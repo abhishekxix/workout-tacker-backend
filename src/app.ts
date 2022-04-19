@@ -9,6 +9,8 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import { errorHandler } from './middleware';
 import { setupRoutes } from './api/setupRoutes';
+import cookieParser from 'cookie-parser';
+import { connectDB } from './db/connect';
 
 dotenv.config();
 
@@ -28,6 +30,7 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use(morgan('tiny'));
+app.use(cookieParser(process.env.COOKIE_SECRET));
 
 setupRoutes(app);
 
@@ -35,6 +38,11 @@ app.use(errorHandler);
 /**
  * Server Activation
  */
-app.listen(PORT, () => {
-  console.log(`The app is listening on port ${PORT}`);
-});
+const start = async () => {
+  await connectDB(process.env.MONGO_URI as string);
+  app.listen(PORT, () => {
+    console.log(`App is running on port: ${PORT}`);
+  });
+};
+
+start();
