@@ -8,7 +8,7 @@ import {
   resetPassword,
   verifyAndResetPassword,
   deleteAccount,
-} from '../controllers/auth';
+} from '@controllers/auth';
 
 export const authRouter = express.Router();
 

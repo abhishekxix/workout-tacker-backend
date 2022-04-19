@@ -7,10 +7,10 @@ import * as dotenv from 'dotenv';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import { errorHandler } from './middleware';
-import { setupRoutes } from './api/setupRoutes';
+import { errorHandler } from '@middleware';
+import { setupRoutes } from '@api/setupRoutes';
 import cookieParser from 'cookie-parser';
-import { connectDB } from './db/connect';
+import { connectDB } from '@db/connect';
 
 dotenv.config();
 
