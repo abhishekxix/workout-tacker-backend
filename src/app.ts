@@ -8,6 +8,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { errorHandler } from './middleware';
+import { setupRoutes } from './api/setupRoutes';
 
 dotenv.config();
 
@@ -27,6 +28,8 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use(morgan('tiny'));
+
+setupRoutes(app);
 
 app.use(errorHandler);
 /**
