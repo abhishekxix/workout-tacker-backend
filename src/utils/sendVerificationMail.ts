@@ -4,7 +4,6 @@ import nodemailer from 'nodemailer';
 export const sendVerificationMail = async (user: any) => {
   const { name, email, _id } = user;
   const tokenUser = { name, email, _id };
-  console.log(tokenUser);
 
   const verificationToken = createJWT(
     tokenUser,

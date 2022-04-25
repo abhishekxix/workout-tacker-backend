@@ -11,13 +11,10 @@ export const signup = async (req: Request, res: Response) => {
     password,
     phoneNumber,
   });
-  console.log('user created');
 
   await sendVerificationMail(user);
-  console.log('mail sent');
 
   res
     .status(StatusCodes.CREATED)
     .json({ msg: 'please verify your email address.' });
-  console.log('response sent');
 };
