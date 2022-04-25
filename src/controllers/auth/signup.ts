@@ -1,6 +1,12 @@
 import { Request, Response } from 'express';
-import { UserSchema as User } from '@models';
+import { User } from '@models';
+
 export const signup = async (req: Request, res: Response) => {
-  const { name, email, password, phoneNumber, isVerified } = req.body;
-  const user = await User;
+  const { name, email, password, phoneNumber } = req.body;
+  const user = await User.create({
+    name,
+    email,
+    password,
+    phoneNumber,
+  });
 };
