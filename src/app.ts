@@ -1,21 +1,21 @@
 /**
  * Required External Modules
  */
-import 'express-async-errors';
+require('express-async-errors');
 import express from 'express';
 import * as dotenv from 'dotenv';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import { errorHandler } from '@middleware';
-import { setupRoutes } from '@api/setupRoutes';
 import cookieParser from 'cookie-parser';
-import { connectDB } from '@db/connect';
+import { errorHandler } from './middleware';
+import { setupRoutes } from './api/setupRoutes';
+import { connectDB } from './db/connect';
 
 dotenv.config();
 
 /**
- * App Variables
+ * App Variablesnode build/app.js
  */
 if (!process.env.PORT) process.exit(1);
 
