@@ -11,4 +11,9 @@ declare module 'Interfaces' {
     code: number;
     message: string;
   }
+  export interface TokenUser {
+    name: string;
+    email: string;
+    _id: string;
+  }
 }

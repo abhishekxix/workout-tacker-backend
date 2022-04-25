@@ -1,9 +1,9 @@
 import { createJWT } from './createJWT';
 import nodemailer from 'nodemailer';
+import { createTokenUser } from './createTokenUser';
 
 export const sendVerificationMail = async (user: any) => {
-  const { name, email, _id } = user;
-  const tokenUser = { name, email, _id };
+  const tokenUser = createTokenUser(user);
 
   const verificationToken = createJWT(
     tokenUser,
@@ -19,7 +19,7 @@ export const sendVerificationMail = async (user: any) => {
   });
   let info = await mailTransporter.sendMail({
     from: `"No reply" <verification@workout-app>`,
-    to: email,
+    to: user.email,
     subject: 'Verify email address',
     html: `Click the following link to verify your email address: <br/>
             <a href="http://localhost:${process.env.PORT}/api/v1/auth/verifyEmail/${verificationToken}" target="_blank">Verify email</a> <br/>

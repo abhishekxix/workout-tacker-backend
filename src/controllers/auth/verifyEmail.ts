@@ -1,10 +1,8 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { UserInterface } from 'Interfaces';
-
 import { BadRequestError } from '../../errors';
 import { User } from '../../models';
-import { attachTokenCookie, verifyToken } from '../../utils';
+import { attachTokenCookie, verifyToken, createTokenUser } from '../../utils';
 
 export const verifyEmail = async (req: Request, res: Response) => {
   const { verificationToken } = req.params;
@@ -25,7 +23,7 @@ export const verifyEmail = async (req: Request, res: Response) => {
   }
   user.isVerified = true;
   await user.save();
-  const tokenUser = { email: user.email, name: user.name, _id: user._id };
+  const tokenUser = createTokenUser(user);
 
   attachTokenCookie(res, tokenUser);
   res.status(StatusCodes.OK).json({ msg: 'verified.' });
