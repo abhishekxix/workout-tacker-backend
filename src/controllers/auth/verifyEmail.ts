@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { BadRequestError } from '../../errors';
+import { BadRequestError, NotFoundError } from '../../errors';
 import { User } from '../../models';
 import { attachTokenCookie, verifyToken, createTokenUser } from '../../utils';
 
@@ -18,10 +18,12 @@ export const verifyEmail = async (req: Request, res: Response) => {
     email: payload.email,
   });
 
-  if (user && user.isVerified) {
+  if (!user) throw NotFoundError(`No user found with email ${payload.email}`);
+
+  if (user && user.isEmailVerified) {
     throw BadRequestError('User is already verified.');
   }
-  user.isVerified = true;
+  user.isEmailVerified = true;
   await user.save();
   const tokenUser = createTokenUser(user);
 

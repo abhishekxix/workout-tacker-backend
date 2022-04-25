@@ -22,7 +22,7 @@ export const login = async (req: Request, res: Response) => {
 
   if (!user) throw NotFoundError(`No user found with email ${email}`);
 
-  if (!user.isVerified) {
+  if (!user.isEmailVerified) {
     sendVerificationMail(user);
     throw UnauthorizedError('Please verify your email id before you log in.');
   }

@@ -4,7 +4,8 @@ declare module 'Interfaces' {
     email: string;
     password: string;
     phoneNumber?: string;
-    isVerified: boolean;
+    isEmailVerified: boolean;
+    isPhoneVerified: boolean;
     _id: string;
   }
   export interface CustomAPIError {
