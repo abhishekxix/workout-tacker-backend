@@ -7,7 +7,8 @@ export const authenticateUser = (
   res: Response | any,
   next: NextFunction
 ) => {
-  const { token } = res.signedCookies;
+  const { token } = req.signedCookies;
+
   if (!token) {
     throw UnauthorizedError('You need to be logged in to perform this action.');
   }
