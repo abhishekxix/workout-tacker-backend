@@ -27,9 +27,10 @@ export const login = async (req: Request, res: Response) => {
     throw UnauthorizedError('Please verify your email id before you log in.');
   }
 
-  if (!(await user.comparePassword(password)))
+  if (!(await user.comparePassword(password))) {
+    res.clearCookie('token');
     throw UnauthorizedError('Wrong password');
-
+  }
   const tokenUser = createTokenUser(user);
   attachTokenCookie(res, tokenUser);
   res.status(StatusCodes.OK).json({ user: tokenUser });
