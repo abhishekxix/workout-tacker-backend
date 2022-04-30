@@ -19,6 +19,8 @@
 - `TWILIO_SMS_PHONE_NUMBER`
 - `SERVER_URL`
 
+To connect to a local mongodb instance set `MONGO_URI=mongodb://127.0.0.1:27017/workout-app`
+
 ## Build the code
 
 `npm run build`
