@@ -1,19 +1,16 @@
 import { Request, Response } from 'express';
 import { User } from '../../models';
-import { sendVerificationMail, sendVerificationSMS } from '../../utils';
+import {
+  formatPhoneNumber,
+  sendVerificationMail,
+  sendVerificationSMS,
+} from '../../utils';
 import { StatusCodes } from 'http-status-codes';
-import libphonenumber from 'google-libphonenumber';
 
 export const signup = async (req: Request, res: Response) => {
   const { name, email, password, phoneNumber, region } = req.body;
 
-  const phoneUtil = libphonenumber.PhoneNumberUtil.getInstance();
-  const phoneNumberFormat = libphonenumber.PhoneNumberFormat;
-  const userPhone = phoneUtil.format(
-    phoneUtil.parse(phoneNumber, region),
-    phoneNumberFormat.E164
-  );
-
+  const userPhone = formatPhoneNumber(phoneNumber, region);
   const user = await User.create({
     name,
     email,
