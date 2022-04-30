@@ -15,7 +15,7 @@ export const sendVerificationSMS = async (user: any) => {
   );
 
   await client.messages.create({
-    body: `Click the following link to verify your phone number: http://192.168.1.5:${process.env.PORT}/api/v1/auth/verifyPhone/${verificationToken}`,
+    body: `Click the following link to verify your phone number: ${process.env.SERVER_URL}:${process.env.PORT}/api/v1/auth/verifyPhone/${verificationToken}`,
 
     from: process.env.TWILIO_SMS_PHONE_NUMBER,
     to: user.phoneNumber,

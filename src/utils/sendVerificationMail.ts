@@ -22,8 +22,8 @@ export const sendVerificationMail = async (user: any) => {
     to: user.email,
     subject: 'Verify email address',
     html: `Click the following link to verify your email address: <br/>
-            <a href="http://localhost:${process.env.PORT}/api/v1/auth/verifyEmail/${verificationToken}" target="_blank">Verify email</a> <br/>
+            <a href="${process.env.SERVER_URL}:${process.env.PORT}/api/v1/auth/verifyEmail/${verificationToken}" target="_blank">Verify email</a> <br/>
             If clicking on the above link does not work, paste the following link in the url bar in a web browser: <br/>
-            <a href="http://localhost:${process.env.PORT}/api/v1/auth/verifyEmail/${verificationToken}" target="_blank">http://localhost:${process.env.PORT}/api/v1/auth/verifyEmail/${verificationToken}</a>`,
+            <a href="${process.env.SERVER_URL}:${process.env.PORT}/api/v1/auth/verifyEmail/${verificationToken}" target="_blank">${process.env.SERVER_URL}:${process.env.PORT}/api/v1/auth/verifyEmail/${verificationToken}</a>`,
   });
 };
