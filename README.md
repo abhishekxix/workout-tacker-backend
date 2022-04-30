@@ -2,7 +2,7 @@
 
 ## Install the project
 
-_npm install_
+`npm install`
 
 ## Setup the following .env variables
 
@@ -17,3 +17,12 @@ _npm install_
 - **TWILIO_SID**
 - **TWILIO_AUTH_TOKEN**
 - **TWILIO_SMS_PHONE_NUMBER**
+
+## Build the code
+`npm run build`
+
+## Start the server
+`npm start`
+
+## Start the server in dev mode
+`npm run dev`
