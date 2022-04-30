@@ -17,6 +17,7 @@
 - `TWILIO_SID`
 - `TWILIO_AUTH_TOKEN`
 - `TWILIO_SMS_PHONE_NUMBER`
+- `SERVER_URL`
 
 ## Build the code
 
