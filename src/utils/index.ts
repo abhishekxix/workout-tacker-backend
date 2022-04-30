@@ -5,3 +5,4 @@ export { verifyToken } from './verifyToken';
 export { sendPasswordResetMail } from './sendPasswordResetMail';
 export { createTokenUser } from './createTokenUser';
 export { sendVerificationSMS } from './sendVerificationSMS';
+export { formatPhoneNumber } from './formatPhoneNumber';
