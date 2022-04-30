@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { UnauthorizedError } from '../errors';
 import { verifyToken } from '../utils';
 
-const authenticateUser = (
+export const authenticateUser = (
   req: Request | any,
   res: Response | any,
   next: NextFunction
