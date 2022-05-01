@@ -7,6 +7,13 @@ const DaySchema = new mongoose.Schema({
   },
   weight: {
     type: Number,
+    required: true,
+    validate: {
+      validator: function (v: number) {
+        return v > 0;
+      },
+      message: '{VALUE} should be positive and non zero',
+    },
   },
   userID: {
     type: mongoose.Types.ObjectId,
