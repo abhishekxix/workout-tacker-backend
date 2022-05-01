@@ -13,7 +13,7 @@ const SetSchema = new mongoose.Schema({
       validator: function (v: number) {
         return Number.isInteger(v) && v > 0;
       },
-      message: '{VALUE} is not an integer value',
+      message: '{VALUE} is not a positive integer value',
     },
   },
   weight: {
@@ -21,9 +21,9 @@ const SetSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: function (v: number) {
-        return v > 0;
+        return Number.isInteger(v) && v > 0;
       },
-      message: '{VALUE} should be positive and non zero',
+      message: '{VALUE} is not an integer value',
     },
   },
 });

@@ -10,9 +10,9 @@ const DaySchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: function (v: number) {
-        return v > 0;
+        return Number.isInteger(v) && v > 0;
       },
-      message: '{VALUE} should be positive and non zero',
+      message: '{VALUE} is not an integer value',
     },
   },
   userID: {
