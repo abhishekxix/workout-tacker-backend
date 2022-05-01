@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
 
-const PictureSchema = new mongoose.Schema({
+const PhotoSchema = new mongoose.Schema({
   day: {
     type: mongoose.Types.ObjectId,
     ref: 'Day',
@@ -19,4 +19,4 @@ const PictureSchema = new mongoose.Schema({
   },
 });
 
-export const Picture = mongoose.model('Picture', PictureSchema);
+export const Photo = mongoose.model('Photo', PhotoSchema);

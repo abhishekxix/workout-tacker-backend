@@ -1,6 +1,6 @@
 export {User} from './User';
 export {Day} from './Day';
-export {Picture} from './Picture';
+export {Photo} from './Photo';
 export {WorkoutSession} from './WorkoutSession';
 export {Lift} from './Lift';
 export {Set} from './Set';
