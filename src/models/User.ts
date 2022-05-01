@@ -299,7 +299,7 @@ UserSchema.pre('save', async function () {
   }
 });
 
-UserSchema.pre('deleteOne', async function () {
+UserSchema.post('deleteOne', async function () {
   // Delete associated documents
 });
 
