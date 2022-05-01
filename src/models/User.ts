@@ -298,6 +298,10 @@ UserSchema.pre('save', async function () {
   }
 });
 
+UserSchema.pre('deleteOne', async function () {
+  // Delete associated documents
+});
+
 UserSchema.methods.comparePassword = async function (
   candidatePassword: string
 ) {
