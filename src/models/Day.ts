@@ -15,4 +15,8 @@ const DaySchema = new mongoose.Schema({
   },
 });
 
+DaySchema.post('remove', async function () {
+  // Delete associated documents
+});
+
 export const Day = mongoose.model('Picture', DaySchema);
