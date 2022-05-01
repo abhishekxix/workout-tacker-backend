@@ -1,11 +1,7 @@
-import { Request, Response } from 'express';
-import { StatusCodes } from 'http-status-codes';
-import {
-  BadRequestError,
-  NotFoundError,
-  UnauthorizedError,
-} from '../../errors';
-import { User } from '../../models';
+import {Request, Response} from 'express';
+import {StatusCodes} from 'http-status-codes';
+import {BadRequestError, NotFoundError, UnauthorizedError} from '../../errors';
+import {User} from '../../models';
 import {
   attachTokenCookie,
   createTokenUser,
@@ -13,12 +9,12 @@ import {
 } from '../../utils';
 
 export const login = async (req: Request, res: Response) => {
-  const { email, password } = req.body;
+  const {email, password} = req.body;
 
   if (!(email && password)) {
     throw BadRequestError('Provide both email and password');
   }
-  const user = await User.findOne({ email });
+  const user = await User.findOne({email});
 
   if (!user) throw NotFoundError(`No user found with email ${email}`);
 
@@ -33,5 +29,5 @@ export const login = async (req: Request, res: Response) => {
   }
   const tokenUser = createTokenUser(user);
   attachTokenCookie(res, tokenUser);
-  res.status(StatusCodes.OK).json({ user: tokenUser });
+  res.status(StatusCodes.OK).json({user: tokenUser});
 };

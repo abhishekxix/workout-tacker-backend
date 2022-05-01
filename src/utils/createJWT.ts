@@ -1,4 +1,4 @@
-import jwt, { JwtPayload } from 'jsonwebtoken';
+import jwt, {JwtPayload} from 'jsonwebtoken';
 
 export const createJWT = (
   payload: JwtPayload,

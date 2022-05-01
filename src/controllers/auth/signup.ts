@@ -1,14 +1,14 @@
-import { Request, Response } from 'express';
-import { User } from '../../models';
+import {Request, Response} from 'express';
+import {User} from '../../models';
 import {
   formatPhoneNumber,
   sendVerificationMail,
   sendVerificationSMS,
 } from '../../utils';
-import { StatusCodes } from 'http-status-codes';
+import {StatusCodes} from 'http-status-codes';
 
 export const signup = async (req: Request, res: Response) => {
-  const { name, email, password, phoneNumber, region } = req.body;
+  const {name, email, password, phoneNumber, region} = req.body;
 
   const userPhone = formatPhoneNumber(phoneNumber, region);
   const user = await User.create({
@@ -27,5 +27,5 @@ export const signup = async (req: Request, res: Response) => {
     msg += ' and phone number';
   }
 
-  res.status(StatusCodes.CREATED).json({ msg });
+  res.status(StatusCodes.CREATED).json({msg});
 };

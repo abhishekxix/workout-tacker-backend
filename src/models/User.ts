@@ -1,3 +1,4 @@
+/* eslint-disable no-invalid-this */
 import mongoose from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';

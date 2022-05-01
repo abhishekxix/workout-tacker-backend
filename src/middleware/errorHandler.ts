@@ -1,5 +1,5 @@
-import { Request, Response, NextFunction } from 'express';
-import { StatusCodes } from 'http-status-codes';
+import {Request, Response, NextFunction} from 'express';
+import {StatusCodes} from 'http-status-codes';
 
 export const errorHandler = (
   err: any,
@@ -7,7 +7,7 @@ export const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  let customError = {
+  const customError = {
     // set default
     statusCode: err.code || StatusCodes.INTERNAL_SERVER_ERROR,
     msg: err.message || 'Something went wrong try again later',
@@ -31,5 +31,5 @@ export const errorHandler = (
     customError.statusCode = StatusCodes.NOT_FOUND;
   }
 
-  return res.status(customError.statusCode).json({ msg: customError.msg });
+  return res.status(customError.statusCode).json({msg: customError.msg});
 };

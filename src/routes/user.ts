@@ -8,7 +8,7 @@ import {
   updateUser,
   verifyDeleteAccount,
 } from '../controllers/user';
-import { authenticateUser } from '../middleware';
+import {authenticateUser} from '../middleware';
 
 export const userRouter = express.Router();
 

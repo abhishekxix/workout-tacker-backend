@@ -8,13 +8,13 @@
   "overrides": [
     {
       "files": ".prettierrc",
-      "options": { "parser": "json" }
+      "options": {"parser": "json"}
     }
   ],
   "printWidth": 80,
   "quoteProps": "consistent",
   "trailingComma": "es5",
-  "bracketSpacing": true,
+  "bracketSpacing": false,
   "bracketSameLine": false,
   "arrowParens": "avoid",
   "singleAttributePerLine": true

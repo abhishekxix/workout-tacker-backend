@@ -1,4 +1,4 @@
-import { createJWT, createTokenUser } from '.';
+import {createJWT, createTokenUser} from '.';
 import nodemailer from 'nodemailer';
 
 export const sendDeleteAccountEmail = async (user: any) => {
@@ -16,7 +16,7 @@ export const sendDeleteAccountEmail = async (user: any) => {
     },
   });
 
-  let info = await mailTransporter.sendMail({
+  await mailTransporter.sendMail({
     from: `"No reply" <verification@workout-app>`,
     to: user.email,
     subject: 'Delete Account',
