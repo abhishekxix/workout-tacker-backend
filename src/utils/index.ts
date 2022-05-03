@@ -1,9 +1,9 @@
-export {createJWT} from './createJWT';
-export {sendVerificationMail} from './sendVerificationMail';
-export {attachTokenCookie} from './attachTokenCookie';
-export {verifyToken} from './verifyToken';
-export {sendPasswordResetMail} from './sendPasswordResetMail';
-export {createTokenUser} from './createTokenUser';
-export {sendVerificationSMS} from './sendVerificationSMS';
-export {formatPhoneNumber} from './formatPhoneNumber';
-export {sendDeleteAccountEmail} from './sendDeleteAccountEmail';
+export { createJWT } from './createJWT';
+export { sendVerificationMail } from './sendVerificationMail';
+export { attachTokenCookie } from './attachTokenCookie';
+export { verifyToken } from './verifyToken';
+export { sendPasswordResetMail } from './sendPasswordResetMail';
+export { createTokenUser } from './createTokenUser';
+export { sendVerificationSMS } from './sendVerificationSMS';
+export { formatPhoneNumber } from './formatPhoneNumber';
+export { sendDeleteAccountEmail } from './sendDeleteAccountEmail';

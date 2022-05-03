@@ -14,7 +14,7 @@
   "printWidth": 80,
   "quoteProps": "consistent",
   "trailingComma": "es5",
-  "bracketSpacing": false,
+  "bracketSpacing": true,
   "bracketSameLine": false,
   "arrowParens": "avoid",
   "singleAttributePerLine": true

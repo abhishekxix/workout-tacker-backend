@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
-import {createJWT} from './createJWT';
+import { createJWT } from './createJWT';
 import nodemailer from 'nodemailer';
-import {createTokenUser} from './createTokenUser';
+import { createTokenUser } from './createTokenUser';
 
 export const sendVerificationMail = async (user: any) => {
   const tokenUser = createTokenUser(user);
@@ -19,7 +19,7 @@ export const sendVerificationMail = async (user: any) => {
     },
   });
   await mailTransporter.sendMail({
-    from: `"No reply" <verification@workout-app>`,
+    from: '"No reply" <verification@workout-app>',
     to: user.email,
     subject: 'Verify email address',
     html: `Click the following link to verify your email address: <br/>

@@ -9,9 +9,9 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
-import {errorHandler} from './middleware';
-import {setupRoutes} from './api/setupRoutes';
-import {connectDB} from './db/connect';
+import { errorHandler } from './middleware';
+import { setupRoutes } from './api/setupRoutes';
+import { connectDB } from './db/connect';
 
 dotenv.config();
 

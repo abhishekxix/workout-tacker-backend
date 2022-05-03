@@ -1,6 +1,6 @@
-import {createJWT} from './createJWT';
+import { createJWT } from './createJWT';
 import nodemailer from 'nodemailer';
-import {createTokenUser} from './createTokenUser';
+import { createTokenUser } from './createTokenUser';
 
 export const sendPasswordResetMail = async (user: any) => {
   const tokenUser = createTokenUser(user);
@@ -17,7 +17,7 @@ export const sendPasswordResetMail = async (user: any) => {
     },
   });
   await mailTransporter.sendMail({
-    from: `"No reply" <verification@workout-app>`,
+    from: '"No reply" <verification@workout-app>',
     to: user.email,
     subject: 'Reset password',
     html: `Enter the following code to reset password: <br/>

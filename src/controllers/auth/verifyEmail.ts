@@ -1,11 +1,11 @@
-import {Request, Response} from 'express';
-import {StatusCodes} from 'http-status-codes';
-import {BadRequestError, NotFoundError} from '../../errors';
-import {User} from '../../models';
-import {attachTokenCookie, verifyToken, createTokenUser} from '../../utils';
+import { Request, Response } from 'express';
+import { StatusCodes } from 'http-status-codes';
+import { BadRequestError, NotFoundError } from '../../errors';
+import { User } from '../../models';
+import { attachTokenCookie, verifyToken, createTokenUser } from '../../utils';
 
 export const verifyEmail = async (req: Request, res: Response) => {
-  const {verificationToken} = req.params;
+  const { verificationToken } = req.params;
   let payload;
 
   try {
@@ -28,5 +28,5 @@ export const verifyEmail = async (req: Request, res: Response) => {
   const tokenUser = createTokenUser(user);
 
   attachTokenCookie(res, tokenUser);
-  res.status(StatusCodes.OK).json({msg: 'verified.'});
+  res.status(StatusCodes.OK).json({ msg: 'verified.' });
 };

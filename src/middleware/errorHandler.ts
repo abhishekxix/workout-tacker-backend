@@ -1,10 +1,11 @@
-import {Request, Response, NextFunction} from 'express';
-import {StatusCodes} from 'http-status-codes';
+import { Request, Response, NextFunction } from 'express';
+import { StatusCodes } from 'http-status-codes';
 
 export const errorHandler = (
   err: any,
   req: Request,
   res: Response,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   next: NextFunction
 ) => {
   const customError = {
@@ -31,5 +32,5 @@ export const errorHandler = (
     customError.statusCode = StatusCodes.NOT_FOUND;
   }
 
-  return res.status(customError.statusCode).json({msg: customError.msg});
+  return res.status(customError.statusCode).json({ msg: customError.msg });
 };

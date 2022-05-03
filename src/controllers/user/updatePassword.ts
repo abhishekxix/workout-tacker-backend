@@ -1,11 +1,15 @@
-import {Response} from 'express';
-import {StatusCodes} from 'http-status-codes';
-import {BadRequestError, NotFoundError, UnauthorizedError} from '../../errors';
-import {User} from '../../models';
+import { Response } from 'express';
+import { StatusCodes } from 'http-status-codes';
+import {
+  BadRequestError,
+  NotFoundError,
+  UnauthorizedError,
+} from '../../errors';
+import { User } from '../../models';
 
 export const updatePassword = async (req: any, res: Response) => {
-  const {oldPassword, newPassword} = req.body;
-  const {_id} = req.user;
+  const { oldPassword, newPassword } = req.body;
+  const { _id } = req.user;
 
   if (!(oldPassword && newPassword)) {
     throw BadRequestError('Insufficient information.');
@@ -23,5 +27,5 @@ export const updatePassword = async (req: any, res: Response) => {
   user.password = newPassword;
   await user.save();
 
-  res.status(StatusCodes.OK).json({msg: 'Password changed successfulyy'});
+  res.status(StatusCodes.OK).json({ msg: 'Password changed successfulyy' });
 };
