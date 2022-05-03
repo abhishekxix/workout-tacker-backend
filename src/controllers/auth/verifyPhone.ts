@@ -11,7 +11,7 @@ export const verifyPhone = async (req: Request, res: Response) => {
   try {
     payload = verifyToken(verificationToken);
   } catch (err) {
-    throw BadRequestError('Invalid verification token');
+    throw new BadRequestError('Invalid verification token');
   }
 
   const user: any = await User.findOne({
@@ -19,13 +19,13 @@ export const verifyPhone = async (req: Request, res: Response) => {
   });
 
   if (!user) {
-    throw NotFoundError(
+    throw new NotFoundError(
         `No user found with phone number ${payload.phoneNumber}`,
     );
   }
 
   if (user && user.isPhoneVerified) {
-    throw BadRequestError('User is already verified.');
+    throw new BadRequestError('User is already verified.');
   }
   user.isPhoneVerified = true;
   await user.save();

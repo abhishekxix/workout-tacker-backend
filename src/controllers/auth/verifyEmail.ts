@@ -11,17 +11,19 @@ export const verifyEmail = async (req: Request, res: Response) => {
   try {
     payload = verifyToken(verificationToken);
   } catch (err) {
-    throw BadRequestError('Invalid verification token');
+    throw new BadRequestError('Invalid verification token');
   }
 
   const user: any = await User.findOne({
     email: payload.email,
   });
 
-  if (!user) throw NotFoundError(`No user found with email ${payload.email}`);
+  if (!user) {
+    throw new NotFoundError(`No user found with email ${payload.email}`);
+  }
 
   if (user && user.isEmailVerified) {
-    throw BadRequestError('User is already verified.');
+    throw new BadRequestError('User is already verified.');
   }
   user.isEmailVerified = true;
   await user.save();

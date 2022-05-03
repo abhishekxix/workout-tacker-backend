@@ -8,13 +8,13 @@ export const resetPassword = async (req: Request, res: Response) => {
   const {email} = req.body;
 
   if (!email) {
-    throw BadRequestError('Please provide email address.');
+    throw new BadRequestError('Please provide email address.');
   }
 
   const user = await User.findOne({email});
 
   if (!user) {
-    throw NotFoundError(`No user found with email: ${email}`);
+    throw new NotFoundError(`No user found with email: ${email}`);
   }
 
   sendPasswordResetMail(user);

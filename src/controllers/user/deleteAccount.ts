@@ -8,14 +8,16 @@ export const deleteAccount = async (req: any, res: Response) => {
   const {_id} = req.user;
   const {email, password} = req.body;
 
-  if (!(email && password)) throw BadRequestError('Insufficient information');
+  if (!(email && password)) {
+    throw new BadRequestError('Insufficient information');
+  }
 
   const user = await User.findOne({email, _id});
 
-  if (!user) throw NotFoundError('User not found');
+  if (!user) throw new NotFoundError('User not found');
 
   if (!(await user.comparePassword(password))) {
-    throw BadRequestError('Wrong password');
+    throw new BadRequestError('Wrong password');
   }
 
   user.isDeletionVerified = true;

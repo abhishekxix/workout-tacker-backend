@@ -6,7 +6,7 @@ import {attachTokenCookie, createTokenUser} from '../../utils';
 
 export const updateUser = async (req: Request | any, res: Response) => {
   const {name}: { name: string } = req.body;
-  if (!name) throw BadRequestError('Invalid value for name');
+  if (!name) throw new BadRequestError('Invalid value for name');
 
   const user = await User.findById(req.user._id);
   user.name = name;

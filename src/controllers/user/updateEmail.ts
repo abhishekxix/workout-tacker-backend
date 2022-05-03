@@ -9,7 +9,7 @@ export const updateEmail = async (req: any, res: Response) => {
   const {_id} = req.user;
 
   if (!email) {
-    throw BadRequestError('Please provide a value for email');
+    throw new BadRequestError('Please provide a value for email');
   }
 
   const user = await User.findById(_id);

@@ -1,9 +1,17 @@
 import type {CustomAPIError} from 'Interfaces';
 import {StatusCodes} from 'http-status-codes';
 
-export const UnauthorizedError = (message: string): CustomAPIError => {
-  return {
-    code: StatusCodes.UNAUTHORIZED,
-    message,
-  };
-};
+
+/** */
+export class UnauthorizedError implements CustomAPIError {
+  readonly message: string;
+  readonly code: number;
+
+  /**
+   * @param  {string} message
+   */
+  constructor(message:string) {
+    this.message = message;
+    this.code = StatusCodes.UNAUTHORIZED;
+  }
+}

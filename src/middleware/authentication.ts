@@ -10,13 +10,15 @@ export const authenticateUser = (
   const {token} = req.signedCookies;
 
   if (!token) {
-    throw UnauthorizedError('You need to be logged in to perform this action.');
+    throw new UnauthorizedError(
+        'You need to be logged in to perform this action.',
+    );
   }
   let tokenUser = undefined;
   try {
     tokenUser = verifyToken(token);
   } catch (err) {
-    throw UnauthorizedError('Invalid token.');
+    throw new UnauthorizedError('Invalid token.');
   }
   delete tokenUser.iat;
   delete tokenUser.exp;

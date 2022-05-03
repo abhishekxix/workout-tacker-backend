@@ -12,16 +12,16 @@ export const updatePassword = async (req: any, res: Response) => {
   const {_id} = req.user;
 
   if (!(oldPassword && newPassword)) {
-    throw BadRequestError('Insufficient information.');
+    throw new BadRequestError('Insufficient information.');
   }
 
   const user = await User.findById(_id);
 
-  if (!user) throw NotFoundError(`No user found with id: ${_id}`);
+  if (!user) throw new NotFoundError(`No user found with id: ${_id}`);
 
   if (!(await user.comparePassword(oldPassword))) {
     res.clearCookie('token');
-    throw UnauthorizedError('Wrong password');
+    throw new UnauthorizedError('Wrong password');
   }
 
   user.password = newPassword;

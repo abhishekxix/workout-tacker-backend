@@ -9,7 +9,7 @@ export const updatePhoneNumber = async (req: any, res: Response) => {
   const {_id} = req.user;
 
   if (!(phoneNumber && region)) {
-    throw BadRequestError('Please provide phone number and region');
+    throw new BadRequestError('Please provide phone number and region');
   }
 
   const userPhone = formatPhoneNumber(phoneNumber, region);

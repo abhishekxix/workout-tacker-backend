@@ -12,13 +12,13 @@ export const verifyDeleteAccount = async (req: Request, res: Response) => {
   try {
     payload = verifyToken(verificationToken);
   } catch (err) {
-    throw UnauthorizedError('Invalid verification token');
+    throw new UnauthorizedError('Invalid verification token');
   }
 
   const user = await User.findOne({_id: payload._id});
 
   if (!user.isDeletionVerified) {
-    throw UnauthorizedError('Deletion is not authorized');
+    throw new UnauthorizedError('Deletion is not authorized');
   }
 
   await User.deleteOne({_id: user._id});
