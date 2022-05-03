@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const DaySchema = new mongoose.Schema({
+const DailyStatSchema = new mongoose.Schema({
   date: {
     type: Date,
     required: true,
@@ -22,8 +22,8 @@ const DaySchema = new mongoose.Schema({
   },
 });
 
-DaySchema.post('remove', async function() {
+DailyStatSchema.post('remove', async function() {
   // Delete associated documents
 });
 
-export const Day = mongoose.model('Picture', DaySchema);
+export const DailyStat = mongoose.model('DailyStat', DailyStatSchema);

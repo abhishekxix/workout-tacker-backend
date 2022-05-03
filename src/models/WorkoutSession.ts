@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const WorkoutSessionSchema = new mongoose.Schema({
   day: {
     type: mongoose.Types.ObjectId,
-    ref: 'Day',
+    ref: 'DailyStat',
     required: true,
   },
   name: {
