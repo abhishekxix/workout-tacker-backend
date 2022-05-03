@@ -1,4 +1,4 @@
-import {Response} from 'express';
+import {Request, Response} from 'express';
 import {StatusCodes} from 'http-status-codes';
 import {
   BadRequestError,
@@ -7,9 +7,9 @@ import {
 } from '../../errors';
 import {User} from '../../models';
 
-export const updatePassword = async (req: any, res: Response) => {
+export const updatePassword = async (req: Request, res: Response) => {
   const {oldPassword, newPassword} = req.body;
-  const {_id} = req.user;
+  const {_id} = res.locals.user;
 
   if (!(oldPassword && newPassword)) {
     throw new BadRequestError('Insufficient information.');

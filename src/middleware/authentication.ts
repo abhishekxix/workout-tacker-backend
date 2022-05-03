@@ -1,10 +1,11 @@
 import {Request, Response, NextFunction} from 'express';
 import {UnauthorizedError} from '../errors';
 import {verifyToken} from '../utils';
+import {TokenUser} from 'Interfaces';
 
 export const authenticateUser = (
-    req: Request | any,
-    res: Response | any,
+    req: Request,
+    res: Response,
     next: NextFunction,
 ) => {
   const {token} = req.signedCookies;
@@ -22,6 +23,7 @@ export const authenticateUser = (
   }
   delete tokenUser.iat;
   delete tokenUser.exp;
-  req.user = tokenUser;
+  const user: TokenUser = tokenUser;
+  res.locals.user = user;
   next();
 };

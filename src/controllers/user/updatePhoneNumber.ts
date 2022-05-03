@@ -1,12 +1,12 @@
-import {Response} from 'express';
+import {Request, Response} from 'express';
 import {StatusCodes} from 'http-status-codes';
 import {BadRequestError} from '../../errors';
 import {User} from '../../models';
 import {formatPhoneNumber, sendVerificationSMS} from '../../utils';
 
-export const updatePhoneNumber = async (req: any, res: Response) => {
+export const updatePhoneNumber = async (req: Request, res: Response) => {
   const {phoneNumber, region} = req.body;
-  const {_id} = req.user;
+  const {_id} = res.locals.user;
 
   if (!(phoneNumber && region)) {
     throw new BadRequestError('Please provide phone number and region');
