@@ -10,7 +10,7 @@ const SetSchema = new mongoose.Schema({
     type: Number,
     required: true,
     validate: {
-      validator: function (v: number) {
+      validator: function(v: number) {
         return Number.isInteger(v) && v > 0;
       },
       message: '{VALUE} is not a positive integer value',
@@ -20,7 +20,7 @@ const SetSchema = new mongoose.Schema({
     type: Number,
     required: true,
     validate: {
-      validator: function (v: number) {
+      validator: function(v: number) {
         return Number.isInteger(v) && v > 0;
       },
       message: '{VALUE} is not an integer value',

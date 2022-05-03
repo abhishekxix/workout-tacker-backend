@@ -1,12 +1,12 @@
-import { Response } from 'express';
-import { StatusCodes } from 'http-status-codes';
-import { BadRequestError } from '../../errors';
-import { User } from '../../models';
-import { formatPhoneNumber, sendVerificationSMS } from '../../utils';
+import {Response} from 'express';
+import {StatusCodes} from 'http-status-codes';
+import {BadRequestError} from '../../errors';
+import {User} from '../../models';
+import {formatPhoneNumber, sendVerificationSMS} from '../../utils';
 
 export const updatePhoneNumber = async (req: any, res: Response) => {
-  const { phoneNumber, region } = req.body;
-  const { _id } = req.user;
+  const {phoneNumber, region} = req.body;
+  const {_id} = req.user;
 
   if (!(phoneNumber && region)) {
     throw BadRequestError('Please provide phone number and region');
@@ -23,6 +23,6 @@ export const updatePhoneNumber = async (req: any, res: Response) => {
   await sendVerificationSMS(user);
 
   res
-    .status(StatusCodes.ACCEPTED)
-    .json({ msg: 'Please verify your phone number.' });
+      .status(StatusCodes.ACCEPTED)
+      .json({msg: 'Please verify your phone number.'});
 };

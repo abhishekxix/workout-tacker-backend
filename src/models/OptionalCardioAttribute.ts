@@ -21,6 +21,6 @@ const OptionalCardioAttributeSchema = new mongoose.Schema({
 });
 
 export const OptionalCardioAttribute = mongoose.model(
-  'OptionalCardioAttribute',
-  OptionalCardioAttributeSchema
+    'OptionalCardioAttribute',
+    OptionalCardioAttributeSchema,
 );

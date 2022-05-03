@@ -1,12 +1,12 @@
-import { Request, Response, NextFunction } from 'express';
-import { StatusCodes } from 'http-status-codes';
+import {Request, Response, NextFunction} from 'express';
+import {StatusCodes} from 'http-status-codes';
 
 export const errorHandler = (
-  err: any,
-  req: Request,
-  res: Response,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  next: NextFunction
+    err: any,
+    req: Request,
+    res: Response,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    next: NextFunction,
 ) => {
   const customError = {
     // set default
@@ -15,14 +15,14 @@ export const errorHandler = (
   };
   if (err.name === 'ValidationError') {
     customError.msg = Object.values(err.errors)
-      .map((item: any) => item.message)
-      .join(',');
+        .map((item: any) => item.message)
+        .join(',');
     customError.statusCode = StatusCodes.BAD_REQUEST;
   }
 
   if (err.code && err.code === 11000) {
     customError.msg = `Duplicate value entered for ${Object.keys(
-      err.keyValue
+        err.keyValue,
     )} field, please choose another value`;
     customError.statusCode = StatusCodes.BAD_REQUEST;
   }
@@ -32,5 +32,5 @@ export const errorHandler = (
     customError.statusCode = StatusCodes.NOT_FOUND;
   }
 
-  return res.status(customError.statusCode).json({ msg: customError.msg });
+  return res.status(customError.statusCode).json({msg: customError.msg});
 };

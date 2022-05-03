@@ -17,6 +17,6 @@ authRouter.route('/logout').get(logout);
 authRouter.route('/verifyEmail/:verificationToken').get(verifyEmail);
 authRouter.route('/verifyPhone/:verificationToken').get(verifyPhone);
 authRouter
-  .route('/resetPassword')
-  .post(resetPassword)
-  .patch(verifyPasswordReset);
+    .route('/resetPassword')
+    .post(resetPassword)
+    .patch(verifyPasswordReset);

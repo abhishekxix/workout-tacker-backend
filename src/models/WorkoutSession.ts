@@ -22,11 +22,11 @@ const WorkoutSessionSchema = new mongoose.Schema({
   },
 });
 
-WorkoutSessionSchema.post('remove', async function () {
+WorkoutSessionSchema.post('remove', async function() {
   // Delete associated documents
 });
 
 export const WorkoutSession = mongoose.model(
-  'WorkoutSession',
-  WorkoutSessionSchema
+    'WorkoutSession',
+    WorkoutSessionSchema,
 );

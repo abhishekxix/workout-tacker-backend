@@ -1,11 +1,11 @@
-import { createJWT, createTokenUser } from '.';
+import {createJWT, createTokenUser} from '.';
 import nodemailer from 'nodemailer';
 
 export const sendDeleteAccountEmail = async (user: any) => {
   const tokenUser = createTokenUser(user);
   const verificationToken = createJWT(
-    tokenUser,
-    process.env.JWT_VERIFICATION_LIFETIME as string
+      tokenUser,
+    process.env.JWT_VERIFICATION_LIFETIME as string,
   );
   const mailTransporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',

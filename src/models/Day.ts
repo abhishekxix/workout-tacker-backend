@@ -9,7 +9,7 @@ const DaySchema = new mongoose.Schema({
     type: Number,
     required: true,
     validate: {
-      validator: function (v: number) {
+      validator: function(v: number) {
         return Number.isInteger(v) && v > 0;
       },
       message: '{VALUE} is not an integer value',
@@ -22,7 +22,7 @@ const DaySchema = new mongoose.Schema({
   },
 });
 
-DaySchema.post('remove', async function () {
+DaySchema.post('remove', async function() {
   // Delete associated documents
 });
 

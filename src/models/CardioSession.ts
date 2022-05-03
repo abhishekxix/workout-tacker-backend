@@ -16,7 +16,7 @@ const CardioSessionSchema = new mongoose.Schema({
     type: Number,
     required: true,
     validate: {
-      validator: function (v: number) {
+      validator: function(v: number) {
         return Number.isInteger(v) && v > 0;
       },
       message: '{VALUE} is not an integer value',
@@ -24,11 +24,11 @@ const CardioSessionSchema = new mongoose.Schema({
   },
 });
 
-CardioSessionSchema.post('remove', function () {
+CardioSessionSchema.post('remove', function() {
   // Delete associated documents
 });
 
 export const CardioSession = mongoose.model(
-  'CardioSession',
-  CardioSessionSchema
+    'CardioSession',
+    CardioSessionSchema,
 );

@@ -1,5 +1,5 @@
-import { createJWT } from './createJWT';
-import { Response } from 'express';
+import {createJWT} from './createJWT';
+import {Response} from 'express';
 
 export const attachTokenCookie = (res: Response, tokenUser: any) => {
   const token = createJWT(tokenUser, process.env.LOGIN_LIFETIME);

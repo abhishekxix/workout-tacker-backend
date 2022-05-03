@@ -8,7 +8,7 @@ import {
   updateUser,
   verifyDeleteAccount,
 } from '../controllers/user';
-import { authenticateUser } from '../middleware';
+import {authenticateUser} from '../middleware';
 
 export const userRouter = express.Router();
 
@@ -19,6 +19,6 @@ userRouter.route('/updateEmail').patch(updateEmail);
 userRouter.route('/updatePhoneNumber').patch(updatePhoneNumber);
 userRouter.route('/updatePassword').patch(updatePassword);
 userRouter
-  .route('/deleteAccount')
-  .post(deleteAccount)
-  .delete(verifyDeleteAccount);
+    .route('/deleteAccount')
+    .post(deleteAccount)
+    .delete(verifyDeleteAccount);

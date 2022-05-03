@@ -1,14 +1,14 @@
 /* eslint-disable max-len */
-import { createJWT } from './createJWT';
+import {createJWT} from './createJWT';
 import nodemailer from 'nodemailer';
-import { createTokenUser } from './createTokenUser';
+import {createTokenUser} from './createTokenUser';
 
 export const sendVerificationMail = async (user: any) => {
   const tokenUser = createTokenUser(user);
 
   const verificationToken = createJWT(
-    tokenUser,
-    process.env.JWT_VERIFICATION_LIFETIME as string
+      tokenUser,
+    process.env.JWT_VERIFICATION_LIFETIME as string,
   );
   const mailTransporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',

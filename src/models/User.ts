@@ -291,7 +291,7 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-UserSchema.pre('save', async function () {
+UserSchema.pre('save', async function() {
   if (this.isModified('password')) {
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(this.password, salt);
@@ -299,12 +299,12 @@ UserSchema.pre('save', async function () {
   }
 });
 
-UserSchema.post('deleteOne', async function () {
+UserSchema.post('deleteOne', async function() {
   // Delete associated documents
 });
 
-UserSchema.methods.comparePassword = async function (
-  candidatePassword: string
+UserSchema.methods.comparePassword = async function(
+    candidatePassword: string,
 ) {
   return await bcrypt.compare(candidatePassword, this.password);
 };

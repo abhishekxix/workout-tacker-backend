@@ -19,7 +19,7 @@ const LiftSchema = new mongoose.Schema({
   },
 });
 
-LiftSchema.post('remove', async function () {
+LiftSchema.post('remove', async function() {
   // Delete associated documents
 });
 
