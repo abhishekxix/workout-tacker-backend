@@ -10,6 +10,7 @@ import {
 } from '../controllers/user';
 import {authenticateUser} from '../middleware';
 
+// eslint-disable-next-line new-cap
 export const userRouter = express.Router();
 
 userRouter.use(authenticateUser);

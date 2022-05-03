@@ -9,6 +9,7 @@ import {
   verifyPasswordReset,
 } from '../controllers/auth';
 
+// eslint-disable-next-line new-cap
 export const authRouter = express.Router();
 
 authRouter.route('/signup').post(signup);
