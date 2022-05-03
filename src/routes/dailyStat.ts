@@ -5,9 +5,11 @@ import {
   getDailyStat,
   updateDailyStat,
 } from '../controllers/dailyStat';
+import {authenticateUser} from '../middleware';
 
 // eslint-disable-next-line new-cap
 export const dailyStatRouter = express.Router();
+dailyStatRouter.use(authenticateUser);
 
 dailyStatRouter
     .route('/')
