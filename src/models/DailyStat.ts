@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const DailyStatSchema = new mongoose.Schema({
   date: {
-    type: Date,
+    type: String,
     required: true,
   },
   weight: {
