@@ -4,7 +4,7 @@ import validator from 'validator';
 const PhotoSchema = new mongoose.Schema({
   day: {
     type: mongoose.Types.ObjectId,
-    ref: 'Day',
+    ref: 'DailyStat',
     required: true,
   },
   label: {

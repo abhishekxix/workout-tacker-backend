@@ -1,5 +1,5 @@
 export {User} from './User';
-export {Day} from './Day';
+export {DailyStat} from './DailyStat';
 export {Photo} from './Photo';
 export {WorkoutSession} from './WorkoutSession';
 export {Lift} from './Lift';
