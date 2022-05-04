@@ -2,11 +2,11 @@ import {Request, Response} from 'express';
 import {StatusCodes} from 'http-status-codes';
 import {BadRequestError} from '../../errors';
 import {User} from '../../models';
-import {sendVerificationMail} from '../../utils';
+import {getResLocal, sendVerificationMail} from '../../utils';
 
 export const updateEmail = async (req: Request, res: Response) => {
   const {email} = req.body;
-  const {_id} = res.locals.user;
+  const {_id} = getResLocal(res, 'user');
 
   if (!email) {
     throw new BadRequestError('Please provide a value for email');

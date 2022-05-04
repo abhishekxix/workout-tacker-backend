@@ -7,3 +7,6 @@ export {createTokenUser} from './createTokenUser';
 export {sendVerificationSMS} from './sendVerificationSMS';
 export {formatPhoneNumber} from './formatPhoneNumber';
 export {sendDeleteAccountEmail} from './sendDeleteAccountEmail';
+export {getDateString} from './getDateString';
+export {getResLocal} from './getResLocal';
+export {setResLocal} from './setResLocal';

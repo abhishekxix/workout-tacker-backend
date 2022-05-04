@@ -2,10 +2,11 @@ import {Request, Response} from 'express';
 import {StatusCodes} from 'http-status-codes';
 import {NotFoundError, UnauthorizedError} from '../../errors';
 import {DailyStat} from '../../models';
+import {getResLocal} from '../../utils';
 
 export const deleteDailyStat = async (req: Request, res: Response) => {
   const {_id} = req.body;
-  const userID = res.locals.user._id;
+  const userID = getResLocal(res, 'user')._id;
 
   const dailyStat = await DailyStat.findOne({_id, userID});
 

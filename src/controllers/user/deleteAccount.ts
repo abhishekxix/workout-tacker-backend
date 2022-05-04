@@ -2,10 +2,10 @@ import {Request, Response} from 'express';
 import {StatusCodes} from 'http-status-codes';
 import {BadRequestError, NotFoundError} from '../../errors';
 import {User} from '../../models';
-import {sendDeleteAccountEmail} from '../../utils';
+import {getResLocal, sendDeleteAccountEmail} from '../../utils';
 
 export const deleteAccount = async (req: Request, res: Response) => {
-  const {_id} = res.locals.user;
+  const {_id} = getResLocal(res, 'user');
   const {email, password} = req.body;
 
   if (!(email && password)) {

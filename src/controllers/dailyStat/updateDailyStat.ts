@@ -2,10 +2,11 @@ import {Request, Response} from 'express';
 import {StatusCodes} from 'http-status-codes';
 import {NotFoundError, UnauthorizedError} from '../../errors';
 import {DailyStat} from '../../models';
+import {getDateString, getResLocal} from '../../utils';
 
 export const updateDailyStat = async (req: Request, res: Response) => {
   const {_id, date, weight} = req.body;
-  const userID = res.locals.user._id;
+  const userID = getResLocal(res, 'user')._id;
 
   const dailyStat = await DailyStat.findOne({_id, userID}, {__v: 0});
 
@@ -20,8 +21,7 @@ export const updateDailyStat = async (req: Request, res: Response) => {
   const dateObject = new Date(date);
 
   // eslint-disable-next-line max-len
-  const dateString = `${dateObject.getUTCFullYear()}-${dateObject.getUTCMonth()+1}-${dateObject.getUTCDate()}`;
-  // ^ The one is added because the month is 0 indexed
+  const dateString = getDateString(dateObject);
 
   dailyStat.date = dateString;
   dailyStat.weight = weight;

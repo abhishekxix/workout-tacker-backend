@@ -1,6 +1,6 @@
 import {Request, Response, NextFunction} from 'express';
 import {UnauthorizedError} from '../errors';
-import {verifyToken} from '../utils';
+import {setResLocal, verifyToken} from '../utils';
 import {TokenUser} from 'Interfaces';
 
 export const authenticateUser = (
@@ -24,6 +24,6 @@ export const authenticateUser = (
   delete tokenUser.iat;
   delete tokenUser.exp;
   const user: TokenUser = tokenUser;
-  res.locals.user = user;
+  setResLocal(res, 'user', user);
   next();
 };

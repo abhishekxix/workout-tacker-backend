@@ -6,10 +6,11 @@ import {
   UnauthorizedError,
 } from '../../errors';
 import {User} from '../../models';
+import {getResLocal} from '../../utils';
 
 export const updatePassword = async (req: Request, res: Response) => {
   const {oldPassword, newPassword} = req.body;
-  const {_id} = res.locals.user;
+  const {_id} = getResLocal(res, 'user');
 
   if (!(oldPassword && newPassword)) {
     throw new BadRequestError('Insufficient information.');
